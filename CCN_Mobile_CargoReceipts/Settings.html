@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> CCN Cargo Receipts</title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="scripts/app.js"></script>
+
+</head>
+<body>
+    <div data-role="header" data-title="Destinations" id="listview-home" data-layout="mobile-view">
+         
+            <div data-role="navbar">    
+                    <span data-role="view-title"> Airport List by City</span>                
+                     <a data-click="closeAirportList" data-role="backbutton" data-align="left">Back</a>
+            </div>
+             
+
+</div>
+
+<style>
+    .km-ios #listview-home .km-content {
+/*        background: url(../../content/shared/images/patterns/pattern2.png);
+        box-shadow: inset 0 0 30px #95764D;
+        -webkit-box-shadow: inset 0 0 30px #95764D;
+*/    }
+    .km-ios #listview-home .km-listview .km-list {
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        box-shadow: 0 1px 5px #95764D;
+        -webkit-box-shadow: 0 1px 5px #95764D;
+    }
+    .km-ios #listview-home .km-listview .km-list > li {
+        border: none;
+    }
+    .km-ios #listview-home .km-listview .km-list > li:last-child {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .km-ios #listview-home .km-navbar {
+        background: url(../../content/shared/images/patterns/pattern9.png);
+    }
+    .km-tablet .km-ios #listview-home .km-view-title {
+        color: #fff;
+        text-shadow: 0 -1px rgba(0,0,0,.5);
+    }
+    .km-ios #listview-home .km-navbar .km-button
+    {
+        background-color: #974d2e;
+    }
+
+</style>
+
+
+<script>
+    var app = new kendo.mobile.Application(document.body);
+</script>
+</body>

@@ -48,9 +48,9 @@
 
     <!--History-->
     <div id="tabstrip-history"
-        data-role="view">                             
-          <div class="view-content">
-            <p class="header-title"> History </p> 
+        data-role="view"
+        data-title="AWB History">                             
+          <div class="view-content">            
         </div>       
         
     </div>
@@ -58,16 +58,29 @@
     <!--Settings-->
     <div id="tabstrip-settings"
         data-role="view"
-        data-title="CCN">
+        data-title="Settings">
         <div class="view-content">
-            <p class="header-title"> Settings </p> 
+             <ul data-role="listview" data-style="inset" data-type="group">
+                <li>
+                    Account 
+                </li>
+                <li>
+                    Notification
+                </li>
+                <li>
+                    Sharing
+                </li>
+                <li>
+                    History 
+                </li>
+            </ul>                        
         </div>                
     </div>
         
     <!--Share-->
     <div id="tabstrip-share"
         data-role="view"
-        data-title="CCN">          
+        data-title="Cargo Receipt Sharing">          
        <!--  <a data-click="closeAirportList" data-role="backbutton" data-align="left">Back</a>-->
           <div class="view-content">               
             <p class="header-title"> Share this to : </p> 
