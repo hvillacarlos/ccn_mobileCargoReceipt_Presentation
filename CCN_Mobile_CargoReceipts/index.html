@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title> CCN Cargo Receipts</title>
     <meta charset="utf-8" />
     <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
@@ -42,7 +42,7 @@
         <div class="buttonArea">
               <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
               <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
-            <a data-align="center" data-role="button" class="common-button" href="Lookup.html">Search</a>                    
+            <a data-align="center" data-role="button" class="common-button" href="LookupTab.html">Search</a>                    
         </div>                
     </div>
 
@@ -67,12 +67,26 @@
     <!--Share-->
     <div id="tabstrip-share"
         data-role="view"
-        data-title="CCN">
-        
-        <div class="view-content">
-            <p class="header-title"> Share </p> 
-        </div>        
-        
+        data-title="CCN">          
+       <!--  <a data-click="closeAirportList" data-role="backbutton" data-align="left">Back</a>-->
+          <div class="view-content">               
+            <p class="header-title"> Share this to : </p> 
+            <ul data-role="listview" data-style="inset">
+                <li>
+                    <span class="settingLabelspan"> Recipient:</span>
+                    <input id="RecipientTxt" type="text" />
+                </li>                                                    
+                <li>
+                     <span class="settingLabelspan"> Subject:</span>
+                     <input id="SubjectTxt" type="text" />
+                 </li>                                                                                    
+                <li>
+                <span class="settingLabelspan"> Message:</span> 
+                <textarea id = "myTextArea" rows = "5"  cols = "200" placeholder="Your text here"></textarea>
+                </li>                                                                                                    
+             </ul>            
+              <a data-align="center" data-role="button" class="common-button" href="LookupTab.html">Send</a>              
+          </div>                                                    
     </div>               
     
     <!--Look-Up-->

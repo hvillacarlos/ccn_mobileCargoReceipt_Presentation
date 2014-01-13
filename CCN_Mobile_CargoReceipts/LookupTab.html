@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>      
+    </head>
+    <body>
+        <div data-role="view" id="tabstrip-one" data-title="Airport by City"> 
+            <div class="view-content">
+                <p class="header-title"> City </p> 
+            </div>        
+                    
+        </div>
+
+<!--     <div data-role="view" id="tabstrip-one" data-title="Airport by City" data-show="onViewShown">            
+        </div>
+
+        <div data-role="view" id="lookup-layout" data-layout="mobile-view" data-title="Airport List">
+            <div data-role="header">
+                <div data-role="navbar">    
+                        <span data-role="view-title"> Airport List</span>                
+                         <a data-click="closeAirportList" data-role="button" data-align="right">Cancel</a>
+                </div>
+            </div>
+        </div>   -->
+        
+        <div data-role="view" id="tabstrip-two" data-title="Airport by Country"> 
+             <div class="view-content">
+                <p class="header-title"> Country </p> 
+            </div>        
+        
+        </div>
+  
+        <div data-role="layout" data-id="mobile-tabstrip">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                    <a data-click="closeAirportList" data-role="backbutton" data-align="left">Back</a>
+                    <!--<button data-role="button" id="changeViewsButton">Change</button>-->
+                </div>
+            </header>
+ 
+            <div data-role="footer">
+                <div data-role="tabstrip" id="tabStrip">
+                    <a href="#tabstrip-one">CITY</a>
+                    <a href="#tabstrip-two">COUNTRY</a>                    
+                </div>
+            </div>
+        </div>
+ 
+        <script>
+            var tabStrip, tabCount;
+            var app = new kendo.mobile.Application(document.body, { transition: "slide", layout: "mobile-tabstrip" });
+            var shouldSwitch = true;
+             
+            $(document).on("deviceready", function() {
+                var jTabStrip = $("#tabStrip");
+                tabStrip = jTabStrip.data("kendoMobileTabStrip");
+                tabCount = jTabStrip.children("a").length;
+            });
+ 
+            $("#changeViewsButton").on("click", function() {
+                // this function executes the programatic navigation
+                if (tabStrip) {
+                    if (shouldSwitch) {
+                        var currentIndex = $(tabStrip.element)
+                            .children()
+                                .index(tabStrip.currentItem());
+                        var nextIndex = (currentIndex === (tabCount - 1)) ? 0 : currentIndex + 1;
+                        var urlToNavigate = "#" + $(tabStrip.element).children("a")[nextIndex].href.split("#")[1];
+ 
+                        tabStrip.switchTo(urlToNavigate);
+                        app.navigate(urlToNavigate);
+ 
+                        // this is a workaround, because
+                        // there is currently a problem
+                        // with a fast navigation
+                        // its reported to the kendo team
+                        shouldSwitch = false;
+                        setTimeout(function() {
+                            shouldSwitch = true;
+                        }, 550);
+                    }
+                }
+            });
+ 
+            function onViewShown(e) {
+                var view = e.view;
+                var param = view.params.param;
+                if (param === undefined) {
+                    param = 0;
+                }
+                alert(param);
+            }
+        </script>
+    </body>
+</html>
