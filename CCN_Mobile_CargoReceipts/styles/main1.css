@@ -2,6 +2,7 @@ body, html {
     margin: 0;
     height: 100%;
     width: 100%;   
+    background-color: AliceBlue;  
 }
 
 /* COMMON STYLES*/
@@ -69,7 +70,7 @@ body, html {
 }
 
 .common-button{
-     width : 90%;   
+     width : 95%;   
      background-color : green;
 }
 
@@ -266,11 +267,6 @@ body, html {
 .km-tablet .km-ios .km-navbar .km-view-title {
     color: #000;
     text-shadow: 0 -1px rgba(255,255,255,0.3);
-}
-
-.km-android .km.view .view-content {
-    background-color:AliceBlue; 
-    color:black;
 }
 
 .km-android .view-content h1 {

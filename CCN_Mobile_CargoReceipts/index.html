@@ -9,11 +9,6 @@
     <script src="cordova.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensotrue"></script>
-
-    <script src="scripts/login.js"></script>
-    <script src="scripts/location.js"></script>
-    <script src="scripts/weather.js"></script>
     <script src="scripts/app.js"></script>
 
 </head>
@@ -21,11 +16,9 @@
     <!--Home-->
     <div id="tabstrip-home"
         data-role="view"
-        data-title="Home">
-
-        <div class="view-content">
-            <h1>CCN Cargo Receipts</h1>           
-
+        data-title="CCN">        
+        <div class="view-content">               
+            <h1 class="welcome">Cargo Receipts</h1>
             <ul data-role="listview" data-style="inset">
                 <li>
                     <span class="settingLabelspan"> AWB No:</span>
@@ -33,46 +26,70 @@
                 </li>                                                    
                 <li>
                      <span class="settingLabelspan"> Issued Date:</span>
-                     <input id="IssueDate" type="text" />
-                 </li>                                                    
-
-
-                
-            </ul>
-            
-            
+                     <input id="IssueDateTxt" type="text" />
+                 </li>                                                                    
+                <li>
+                     <span class="settingLabelspan"> Origin:</span>
+                     <input id="OriginTxt" type="text" />
+                </li>
+                <li>
+                     <span class="settingLabelspan"> Destination:</span>
+                     <input id="DestinationTxt" type="text" />
+                </li>                
+                </ul>            
         </div>
+        <p></p>
+        <div class="buttonArea">
+              <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
+              <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
+            <a data-align="center" data-role="button" class="common-button" href="Lookup.html">Search</a>                    
+        </div>                
     </div>
 
-    <!--Login-->
+    <!--History-->
     <div id="tabstrip-history"
-        data-role="view"
-        data-title="Login"
-        data-model="app.loginService.viewModel">
-
-        <div class="view-content">
-        </div>
+        data-role="view">                             
+          <div class="view-content">
+            <p class="header-title"> History </p> 
+        </div>       
+        
     </div>
-
+    
     <!--Settings-->
     <div id="tabstrip-settings"
         data-role="view"
-        data-title="Location"
-        data-init="app.locationService.initLocation"
-        data-show="app.locationService.show"
-        data-hide="app.locationService.hide"
-        data-model="app.locationService.viewModel"
-        data-stretch="true">
+        data-title="CCN">
+        <div class="view-content">
+            <p class="header-title"> Settings </p> 
+        </div>                
     </div>
-
+        
     <!--Share-->
     <div id="tabstrip-share"
         data-role="view"
-        data-title="Weather"
-        data-model="app.weatherService.viewModel">
+        data-title="CCN">
+        
+        <div class="view-content">
+            <p class="header-title"> Share </p> 
+        </div>        
+        
+    </div>               
+    
+    <!--Look-Up-->
+    <div data-role="view" id="lookup-layout" data-layout="mobile-view" data-title="Airport List">
+        <div data-role="header">
+            <div data-role="navbar">    
+                    <span data-role="view-title"> Airport List</span>                
+                     <a data-click="closeAirportList" data-role="button" data-align="right">Cancel</a>
+            </div>
+        </div>
     </div>
+    
+        <!--    <div data-role="view" id="secondview" data-layout="mobile-view" data-title="Local View">
+        <div style="background: url(../../content/shared/images/patterns/pattern7.png); color: #fff; padding: 50px 0; text-align: center;"><p>Hi, I'm a local view.</p></div>
+        </div>-->
 
-    <!--Share template-->
+    
     <!--Layout-->
     <div data-role="layout" data-id="tabstrip-layout">
         <!--Header-->
@@ -86,17 +103,17 @@
         <div data-role="footer">
             <div data-role="tabstrip">
                 <a href="#tabstrip-home" data-icon="home">Home</a>
-                <a href="#tabstrip-history" data-icon="history">History</a>
+                <a href="#tabstrip-history" data-icon="history">History</a>  
                 <a href="#tabstrip-settings" data-icon="settings">Settings</a>
                 <a href="#tabstrip-share" data-icon="share">Shared</a>
             </div>
         </div>
     </div>
     
-    <script>
-        //-- var app = new kendo.mobile.Application(document.body, { transitional : "slide", layout: "mobile-tabstrip" }); 
-       
-    </script>
     
+   <script>
+        //var app = new kendo.mobile.Application(document.body, { transitional : "slide", layout: "tabstrip-layout",initital: "tabstrip-home" });                       
+   </script>
+
 </body>
 </html>
