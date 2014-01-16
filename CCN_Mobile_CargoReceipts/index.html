@@ -151,7 +151,7 @@
         data-role="view"
         data-title="CCN">        
         <div class="view-content">               
-            <form name='searchForm' id='searchForm' method='POST' action='LookupTab.html'>
+            <form name='detailForm' id='detailForm' method='POST' action='LookupTab.html'>
                 <h3 class="welcome">Details</h3>
                 <ul data-role="listview" data-style="inset">
                     <li>
@@ -160,11 +160,11 @@
                     </li>                                                    
                     <li>
                          <span class="settingLabelspan">Issuing Date</span>
-                         <input id="txtIssuingDateDetail" name="txtIssuedFromDate" type='date' disabled />
+                         <input id="txtIssuingDateDetail" name="txtIssuedFromDate" type='text' disabled />
                      </li> 
                     <li>
                          <span class="settingLabelspan"> Acceptance Date</span>
-                         <input id="txtAcceptanceDateDetail" name="txtIssuedToDate" type='date' disabled />
+                         <input id="txtAcceptanceDateDetail" name="txtIssuedToDate" type='text' disabled />
                      </li> 
                     <li>
                          <span class="settingLabelspan"> Origin</span>
@@ -174,19 +174,19 @@
                          <span class="settingLabelspan"> Destination</span>
                          <input id="txtDestinationDetail" name="txtAcceptanceToDate" type='text' disabled />
                      </li> 
-                    <li>
+                    <!--<li>
                          <span class="settingLabelspan"> Last FWB Date/Time</span>        
-                        <input id="txtLastFWBDetail" name="txtAcceptanceToDate" type='date' disabled />
+                        <input id="txtLastFWBDetail" name="txtAcceptanceToDate" type='text' disabled />
                         
                     </li>                  
                     <li>
                          <span class="settingLabelspan"> Last FSU Date/Time</span>
-                        <input id="txtLastFSUDetail" name="txtAcceptanceToDate" type='date' disabled />
+                        <input id="txtLastFSUDetail" name="txtAcceptanceToDate" type='text' disabled />
                     </li>               
                      <li>
                          <span class="settingLabelspan"> Last Printed Date/Time</span>
-                        <input id="txtLastPrintedDetail" name="txtAcceptanceToDate" type='date' disabled />
-                    </li>               
+                        <input id="txtLastPrintedDetail" name="txtAcceptanceToDate" type='text' disabled />
+                    </li>-->               
                     <li>Notification <input data-role="switch" id="Notification-switch" ></li>
                  </ul>     
               </form>  
@@ -195,7 +195,7 @@
         <div class="buttonArea">
               <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
               <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
-            <a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">Search</a>                    
+            <a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">View Cargo Receipt</a>                    
         </div>                
     </div>
 
