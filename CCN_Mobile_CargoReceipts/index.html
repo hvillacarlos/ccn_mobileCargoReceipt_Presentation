@@ -10,39 +10,57 @@
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="scripts/app.js"></script>
+    <script src="scripts/CargoReceipt.js"></script>
 
 </head>
-<body>
+<body onload="PageLoad()">
     <!--Home-->
+    
     <div id="tabstrip-home"
         data-role="view"
         data-title="CCN">        
         <div class="view-content">               
-            <h1 class="welcome">Cargo Receipts</h1>
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <span class="settingLabelspan"> AWB No:</span>
-                    <input id="AWBNoTxt" type="text" />
-                </li>                                                    
-                <li>
-                     <span class="settingLabelspan"> Issued Date:</span>
-                     <input id="IssueDateTxt" type="text" />
-                 </li>                                                                    
-                <li>
-                     <span class="settingLabelspan"> Origin:</span>
-                     <input id="OriginTxt" type="text" />
-                </li>
-                <li>
-                     <span class="settingLabelspan"> Destination:</span>
-                     <input id="DestinationTxt" type="text" />
-                </li>                
-             </ul>            
+            <form name='searchForm' id='searchForm' method='POST' action='LookupTab.html'>
+                <h3 class="welcome">Cargo Receipts</h3>
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <span class="settingLabelspan"> AWB No</span>
+                        <input id="AWBNoTxt" type="text" />
+                    </li>                                                    
+                    <li>
+                         <span class="settingLabelspan"> Issued From Date</span>
+                         <input id="txtIssuedFromDate" name="txtIssuedFromDate" type='date' />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Issued To Date</span>
+                         <input id="txtIssuedToDate" name="txtIssuedToDate" type='date' />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Acceptance From Date</span>
+                         <input id="txtAcceptanceFromDate" name="txtAcceptanceFromDate" type='date' />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Acceptance To Date</span>
+                         <input id="txtAcceptanceToDate" name="txtAcceptanceToDate" type='date' />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Origin</span>                    
+                            <select id="drpOrigin" value="1" ></select>
+                        
+                    </li>                  
+                    <li>
+                         <span class="settingLabelspan"> Destination</span>
+                         <select id="drpDestination" value="1" ></select>
+                    </li>               
+                 
+                 </ul>     
+              </form>  
         </div>
         <p></p>
         <div class="buttonArea">
               <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
               <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
-            <a data-align="center" data-role="button" class="common-button" href="LookupTab.html">Search</a>                    
+            <a data-align="center" data-role="button" class="common-button"  onclick="searchCargoReceipts()">Search</a>                    
         </div>                
     </div>
 
@@ -60,17 +78,13 @@
         data-role="view"
         data-title="Settings">
         <div class="view-content">
-             <ul data-role="listview" data-style="inset" data-type="group">
-                <li>
-                    Settings   
-                        <ul> 
-                                <li> <a> Account Settings </a> </li>                
-                                <li> <a> Notification     </a> </li>
-                                <li> <a> Sharing          </a> </li>
-                                <li> <a> History          </a> </li>
-                        </ul>
-                 </li>
-            </ul>                        
+             <ul data-role="listview" data-style="inset" >                
+                  <li> <a> Account Settings </a> </li>                
+                  <li> <a> Notification     </a> </li>
+                  <li> <a> Sharing          </a> </li>
+                  <li> <a> History          </a> </li>
+             </ul>
+                                      
         </div>                
     </div>
         
@@ -100,20 +114,91 @@
     </div>               
     
     <!--Look-Up-->
-    <div data-role="view" id="lookup-layout" data-layout="mobile-view" data-title="Airport List">
-        <div data-role="header">
-            <div data-role="navbar">    
-                    <span data-role="view-title"> Airport List</span>                
-                     <a data-click="closeAirportList" data-role="button" data-align="right">Cancel</a>
-            </div>
-        </div>
+    
+    <div id="lookup-layout"
+        data-role="view">   
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
+                    <span data-role="view-title">Search Result</span>
+                </div>
+            </header>
+             <div class="view-content">
+                 <div class="km-listview-wrapper">
+                     <ul data-role="listview" data-style="inset" class="km-widget km-listview km-list km-listinset">             
+                    <li>
+                            <ul  id="searchResult" class="km-list"> 
+                            </ul>
+                     </li>
+                </ul>                          
+                 </div>
+             
+            </div>  
+                                      
+              
+             <!--<ul id="searchResult"data-role="listview" data-style="inset" data-type="group">                         
+             <li>Hello<a href="#tabstrip-settings" data-role="detailbutton" data-style="detaildisclose"></a></li>
+            </ul> -->                       
+                      
     </div>
     
       <!--<div data-role="view" id="secondview" data-layout="mobile-view" data-title="Local View">
         <div style="background: url(../../content/shared/images/patterns/pattern7.png); color: #fff; padding: 50px 0; text-align: center;"><p>Hi, I'm a local view.</p></div>
         </div> -->
 
-    
+    <!--CargoReceipt Detail-->
+     <div id="tabstrip-CargoDetail"
+        data-role="view"
+        data-title="CCN">        
+        <div class="view-content">               
+            <form name='searchForm' id='searchForm' method='POST' action='LookupTab.html'>
+                <h3 class="welcome">Details</h3>
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <span class="settingLabelspan"> AWB No</span>
+                        <input id="AWBNoTxtDetail" type="text" disabled/>
+                    </li>                                                    
+                    <li>
+                         <span class="settingLabelspan">Issuing Date</span>
+                         <input id="txtIssuingDateDetail" name="txtIssuedFromDate" type='date' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Acceptance Date</span>
+                         <input id="txtAcceptanceDateDetail" name="txtIssuedToDate" type='date' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Origin</span>
+                         <input id="txtOriginDetail" name="txtAcceptanceFromDate" type='text' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Destination</span>
+                         <input id="txtDestinationDetail" name="txtAcceptanceToDate" type='text' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Last FWB Date/Time</span>        
+                        <input id="txtLastFWBDetail" name="txtAcceptanceToDate" type='date' disabled />
+                        
+                    </li>                  
+                    <li>
+                         <span class="settingLabelspan"> Last FSU Date/Time</span>
+                        <input id="txtLastFSUDetail" name="txtAcceptanceToDate" type='date' disabled />
+                    </li>               
+                     <li>
+                         <span class="settingLabelspan"> Last Printed Date/Time</span>
+                        <input id="txtLastPrintedDetail" name="txtAcceptanceToDate" type='date' disabled />
+                    </li>               
+                    <li>Notification <input data-role="switch" id="Notification-switch" ></li>
+                 </ul>     
+              </form>  
+        </div>
+        <p></p>
+        <div class="buttonArea">
+              <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
+              <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
+            <a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">Search</a>                    
+        </div>                
+    </div>
+
     <!--Layout-->
     <div data-role="layout" data-id="tabstrip-layout">
         <!--Header-->
