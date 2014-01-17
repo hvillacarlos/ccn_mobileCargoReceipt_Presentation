@@ -30,10 +30,12 @@
                     </li>                                                                     
                  </ul>                                                                                                                     
               </form>              
-          <div class="header">                                         
-               <span class="spanheader" id="spanheaderid"> More Options </span>                
+          <div class="header1">                                         
+               <!--<span class="spanheader" id="spanheaderid"> More Options </span>-->                
+              <a id="displayText" href="javascript:toggle();" class="spanheader"> [+] More Options </a> 
           </div> 
-            <div style="display:none;">
+            
+            <div id="toggleText" style="display:none;">
                 <ul data-role="listview" data-style="inset" id="panelbar">
                             <li>
                                  <span class="settingLabelspan"> Issued From Date</span>
@@ -247,12 +249,31 @@
                 //execute this after slideToggle is done
                 //change text of header based on visibility of content div
                 $header.text(function () {
-                    //change text based on condition                           
-                    return $content.is(":visible") ? "Hide Options": "More Options";                    
-                    this.getElementById("spanheaderid").className="spanheader"
+                    //change text based on condition                                                               
+                    return $content.is(":visible") ? " [-] Hide Options": " [+] More Options";
+                    $content.classname="spanheader";
                 });
             });
         });                                     
- </script>                             
+
+     
+ 
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+    		text.innerHTML = " [+] More Options";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = " [-] Hide Options";
+	}
+} 
+      
+ </script>
+    
+    
+    
 </body>
 </html>
