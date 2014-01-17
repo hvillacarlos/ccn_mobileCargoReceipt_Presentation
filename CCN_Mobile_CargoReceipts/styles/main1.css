@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     height: 100%;
     width: 100%;   
-    background-color: AliceBlue;  
+    background-color: rgb(0, 48, 87);
 }
 
 /* COMMON STYLES*/
@@ -16,8 +16,9 @@ body, html {
 }
 
 .view-content h3 {
-    color: #42454a;
+    color: White;
     font-size: 1.1em;
+    text-align:center; 
 }
 
 .view-content p {
@@ -50,9 +51,21 @@ body, html {
 }
 
 .p header-title {
+    
     font-size:12px;
     text-align:center;
     color:red;    
+}
+
+.InputText {  
+  color:White;   
+  font-size:12px;                    
+  font-weight:bold;  
+}
+
+.spanheader{
+    width:100%;
+    margin:15px;
 }
 
 
@@ -377,3 +390,23 @@ body, html {
         background-size: 100%;
     }
 }
+
+/* DIV Collapse */
+.container {
+    width:100%;
+    border:1px solid #d3d3d3;
+}
+.container div {
+    width:100%;
+}
+.container .header {
+    background-color:#d3d3d3;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.container .content {
+    display: none;
+    padding : 5px;
+}
+
