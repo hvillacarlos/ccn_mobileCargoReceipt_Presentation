@@ -9,7 +9,7 @@
     <script src="cordova.js"></script>
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
-    <script src="scripts/app.js"></script>
+    <script src="scripts/main.js"></script>
     <script src="scripts/CargoReceipt.js"></script>
 
 </head>
@@ -110,9 +110,17 @@
                 </li>         
              </ul>            
               <a data-align="center" data-role="button" class="common-button" href="LookupTab.html" text-align="center">Send</a>              
+              <p></p>
+              <button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>
           </div>                                                    
     </div>               
     
+     <div class="content">
+            <div class="result-area ch60">
+                <div id="infoField" type="text" readonly="readonly"></div>
+                <div class="separator"></div>
+            </div>         
+	</div>    
     <!--Look-Up-->
     
     <div id="lookup-layout"
@@ -196,7 +204,7 @@
               <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
               <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
             <!--<a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">View Cargo Receipt</a>                    -->
-            <button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>
+          <!--  <button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>-->
         </div>
         <div id="infoField" type="text" readonly="readonly"></div>
     </div>
