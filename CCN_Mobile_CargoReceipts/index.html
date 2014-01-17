@@ -23,18 +23,18 @@
         <div class="view-content">               
             <form name='searchForm' id='searchForm' method='POST' action='LookupTab.html'>
                 <h3 class="welcome">Cargo Receipts</h3>
-                <ul data-role="listview" data-style="inset">
+                <ul data-role="listview" data-style="inset" >
                     <li>
                         <span class="settingLabelspan"> AWB No</span>
                         <input id="AWBNoTxt" type="text" class="InputText"/>
                     </li>                                                                     
                  </ul>                                                                                                                     
-              </form>  
-        
-          <div class="header"> 
-              <span class="spanheader"> More Search Options </span>
-          </div>            
-                <ul data-role="listview" data-style="inset">
+              </form>              
+          <div class="header">                                         
+               <span class="spanheader" id="spanheaderid"> More Options </span>                
+          </div> 
+            <div style="display:none;">
+                <ul data-role="listview" data-style="inset" id="panelbar">
                             <li>
                                  <span class="settingLabelspan"> Issued From Date</span>
                                  <input id="txtIssuedFromDate" name="txtIssuedFromDate" type='date' class="InputText"/>
@@ -59,13 +59,15 @@
                                  <span class="settingLabelspan"> Destination</span>
                                  <select id="drpDestination" value="1" class="InputText"></select>
                             </li>               
-                 </ul>                                                                                                                     
+              
+                 </ul>                                                                                                                                 
+            </div>                
         </div>                    
         <p></p>
         <div class="buttonArea">
               <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
               <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
-            <a data-align="center" data-role="button" style="color: white;width:85%;" onclick="searchCargoReceipts()">Search</a>                    
+            <a data-align="center" data-role="button" style="background-color:#0064b5; border-color:white;color: white;width:85%;" onclick="searchCargoReceipts()">Search</a>                    
         </div>                
     </div>
 
@@ -146,8 +148,7 @@
                 </ul>                          
                  </div>
              
-            </div>  
-                                      
+            </div>                                        
               
              <!--<ul id="searchResult"data-role="listview" data-style="inset" data-type="group">                         
              <li>Hello<a href="#tabstrip-settings" data-role="detailbutton" data-style="detaildisclose"></a></li>
@@ -236,22 +237,22 @@
 
     
  <script>
-$(".header").click(function () {
+        $(".header").click(function () {
 
-    $header = $(this);
-    //getting the next element
-    $content = $header.next();
-    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-    $content.slideToggle(500, function () {
-        //execute this after slideToggle is done
-        //change text of header based on visibility of content div
-        $header.text(function () {
-            //change text based on condition
-            return $content.is(":visible") ? "Hide Search Options" : "More Search Options";
-        });
-    });
-});     
-     
+            $header = $(this);
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition                           
+                    return $content.is(":visible") ? "Hide Options": "More Options";                    
+                    this.getElementById("spanheaderid").className="spanheader"
+                });
+            });
+        });                                     
  </script>                             
 </body>
 </html>
