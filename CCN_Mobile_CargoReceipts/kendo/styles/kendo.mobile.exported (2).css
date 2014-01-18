@@ -1,30 +1,58 @@
 .km-ios7 .km-view .km-navbar {
-    background-color: rgb(0, 48, 87);    
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(0,0,0,.2)),color-stop(.5, rgba(0,0,0,.4)),color-stop(.5, rgba(0,0,0,.45)),color-stop(1, rgba(0,0,0,.4))),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGJJREFUeNqUkMEJAEEIA/fAWq8DO9rG7EAU3ZdwW0DyuDwNQ3AeVX0XyN4bnZeYGSzOORhwd1hkJga6GxYzg4GIWH9CFyhQVbC49jDAbDB7wmwwe8JssN+EPcfsUYAtfAIMABlKNaG74oyiAAAAAElFTkSuQmCC);
+    background-image: -moz-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.2),rgba(0,0,0,.4) 50%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.4)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGJJREFUeNqUkMEJAEEIA/fAWq8DO9rG7EAU3ZdwW0DyuDwNQ3AeVX0XyN4bnZeYGSzOORhwd1hkJga6GxYzg4GIWH9CFyhQVbC49jDAbDB7wmwwe8JssN+EPcfsUYAtfAIMABlKNaG74oyiAAAAAElFTkSuQmCC);
+    background-image: -ms-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.2),rgba(0,0,0,.4) 50%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.4)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGJJREFUeNqUkMEJAEEIA/fAWq8DO9rG7EAU3ZdwW0DyuDwNQ3AeVX0XyN4bnZeYGSzOORhwd1hkJga6GxYzg4GIWH9CFyhQVbC49jDAbDB7wmwwe8JssN+EPcfsUYAtfAIMABlKNaG74oyiAAAAAElFTkSuQmCC);
+    background-repeat: repeat;
+    background-position: 0 0,0% 0%;
+    background-color: rgb(0, 100, 181);
 }
+
 .km-ios7 .km-view .km-navbar .km-view-title > * {
     color: White;
 }
-.km-ios7 .km-view .km-navbar .km-button .km-text {
-    color: rgb(255, 255, 255);
-}
-.km-ios7 .km-view .km-content {
-    background-color: rgb(0, 48, 87);   
-    /*background-color: #e5e5e5;*/
+
+.km-ios7 .km-view .km-content {        
+    /*background-color: rgb(0, 48, 87);*/
     margin-right:1%;
     margin-left:1%;
     margin-bottom:1%;
     margin-top:1%;
+    background-color: rgb(0, 100, 181);
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(255,255,255,.2)),color-stop(.5, rgba(255,255,255,.4)),color-stop(.5, rgba(255,255,255,.45)),color-stop(1, rgba(255,255,255,.4)));
+    background-image: -moz-linear-gradient(50% 0,50% 100%,rgba(255,255,255,.2),rgba(255,255,255,.4) 50%,rgba(255,255,255,.45) 50%,rgba(255,255,255,.4));
+    background-image: -ms-linear-gradient(50% 0,50% 100%,rgba(255,255,255,.2),rgba(255,255,255,.4) 50%,rgba(255,255,255,.45) 50%,rgba(255,255,255,.4));
+    background-repeat: repeat;
+    background-position: 0 0;
+    color:White;
+    
+    
 }
 .km-ios7 .km-view .km-tabstrip .km-button {
-    background-color: rgb(0, 48, 87);
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(0,0,0,.2)),color-stop(.5, rgba(0,0,0,.4)),color-stop(.5, rgba(0,0,0,.45)),color-stop(1, rgba(0,0,0,.4))),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGJJREFUeNqUkMEJAEEIA/fAWq8DO9rG7EAU3ZdwW0DyuDwNQ3AeVX0XyN4bnZeYGSzOORhwd1hkJga6GxYzg4GIWH9CFyhQVbC49jDAbDB7wmwwe8JssN+EPcfsUYAtfAIMABlKNaG74oyiAAAAAElFTkSuQmCC);
+    background-image: -moz-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.2),rgba(0,0,0,.4) 50%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.4)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGJJREFUeNqUkMEJAEEIA/fAWq8DO9rG7EAU3ZdwW0DyuDwNQ3AeVX0XyN4bnZeYGSzOORhwd1hkJga6GxYzg4GIWH9CFyhQVbC49jDAbDB7wmwwe8JssN+EPcfsUYAtfAIMABlKNaG74oyiAAAAAElFTkSuQmCC);
+    background-image: -ms-linear-gradient(50% 0,50% 100%,rgba(0,0,0,.2),rgba(0,0,0,.4) 50%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.4)),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGJJREFUeNqUkMEJAEEIA/fAWq8DO9rG7EAU3ZdwW0DyuDwNQ3AeVX0XyN4bnZeYGSzOORhwd1hkJga6GxYzg4GIWH9CFyhQVbC49jDAbDB7wmwwe8JssN+EPcfsUYAtfAIMABlKNaG74oyiAAAAAElFTkSuQmCC);
+    background-repeat: repeat;
+    background-position: 0 0,0% 0%;
+    background-color: rgb(0, 100, 181);
+}
+.km-ios7 .km-view .km-tabstrip .km-button.km-state-active {
+    background-color: rgb(140, 199, 0);
+}
+.km-ios7 .km-view .km-content .km-list > li {
+    /*background-color: rgb(0, 48, 87);
+    */
+    background-color: rgb(0, 100, 181);
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0, rgba(255,255,255,.2)),color-stop(.5, rgba(255,255,255,.4)),color-stop(.5, rgba(255,255,255,.45)),color-stop(1, rgba(255,255,255,.4)));
+    background-image: -moz-linear-gradient(50% 0,50% 100%,rgba(255,255,255,.2),rgba(255,255,255,.4) 50%,rgba(255,255,255,.45) 50%,rgba(255,255,255,.4));
+    background-image: -ms-linear-gradient(50% 0,50% 100%,rgba(255,255,255,.2),rgba(255,255,255,.4) 50%,rgba(255,255,255,.45) 50%,rgba(255,255,255,.4));
+    background-repeat: repeat;
+    background-position: 0 0;
     color:White;
+    
+    
 }
-.km-ios7 .km-view .km-content .km-listgroupinset .km-group-title {
-    color: rgb(0, 48, 87);
-}
-.km-ios7 .km-view .km-content .km-list > li { 
-    background-color: rgb(0, 48, 87);
-    color:white;
+.km-ios7 .km-view .km-tabstrip .km-button .km-icon {
+    color: rgb(255, 255, 255);
 }
 
 .km-ios7 .km-view .km-content .km-list km-text { 
@@ -32,9 +60,7 @@
     color:white;
 }
 
-.km-ios7 .km-view .km-content .km-listgroupinset .km-group-title .km-text {
-    color: rgb(0, 48, 87);    
-}
+
 
 .km-ios .km-view .km-navbar {
     background-color: rgb(0, 100, 181);
@@ -88,10 +114,10 @@
 
 
 .km-android .km-view .km-tabstrip .km-button {
-    background-color: rgb(140, 199, 0);
+    background-color: rgb(0, 163, 199);
 }
 .km-android .km-view .km-tabstrip .km-button.km-state-active {
-    background-color: rgb(0, 163, 199);
+    background-color: rgb(0, 100, 181);
 }
 .km-android .km-view .km-content {
     background-color: rgb(0, 163, 199);
@@ -108,6 +134,8 @@
 .km-android .km-view .km-tabstrip .km-button .km-icon {
     color: rgb(255, 255, 255);
 }
+
+
 .km-blackberry .km-view .km-navbar {
     background-color: rgb(0, 163, 199);
 }
