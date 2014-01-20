@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> CCN Cargo Receipts</title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.mobile.exported (2).css" rel="stylesheet" />
+    <link href="styles/main1.css" rel="stylesheet" />
+
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/CargoReceipt.js"></script>
+
+</head>
+<body onload="PageLoad()">
+    <!--Home-->    
+    <div id="tabstrip-home"
+        data-role="view"
+        data-title="CCN">        
+        <div class="view-content">               
+            <form name='searchForm' id='searchForm' method='POST' action='LookupTab.html'>
+                <h3 class="welcome">Cargo Receipts</h3>
+                <ul data-role="listview" data-style="inset" >
+                    <li>
+                        <span class="settingLabelspan"> AWB No</span>
+                        <input id="AWBNoTxt" type="text" class="InputText"/>
+                    </li>                                                                     
+                 </ul>                                                                                                                     
+              </form>              
+          <div class="header1">                                          
+               <!--<span class="spanheader" id="spanheaderid"> More Options </span>-->                
+              <a id="displayText" href="javascript:toggle();" class="spanheader" style="text-decoration:none;"> [+] More Options </a> 
+          </div> 
+            
+            <div id="toggleText" style="display:none;">
+                <ul data-role="listview" data-style="inset" id="panelbar">
+                            <li>
+                                 <span class="settingLabelspan"> Issued From Date</span>
+                                 <input id="txtIssuedFromDate" name="txtIssuedFromDate" type='date' class="InputText"/>
+                             </li> 
+                            <li>
+                                 <span class="settingLabelspan"> Issued To Date</span>
+                                 <input id="txtIssuedToDate" name="txtIssuedToDate" type='date' class="InputText" />
+                             </li> 
+                            <li>
+                                 <span class="settingLabelspan"> Acceptance From Date</span>
+                                 <input id="txtAcceptanceFromDate" name="txtAcceptanceFromDate" type='date' class="InputText"/>
+                             </li> 
+                            <li>
+                                 <span class="settingLabelspan"> Acceptance To Date</span>
+                                 <input id="txtAcceptanceToDate" name="txtAcceptanceToDate" type='date' class="InputText" />
+                             </li> 
+                            <li>
+                                 <span class="settingLabelspan"> Origin</span>                    
+                                    <select id="drpOrigin" value="1"  class="InputText"></select>                                                                
+                            </li>                  
+                            <li>
+                                 <span class="settingLabelspan"> Destination</span>
+                                 <select id="drpDestination" value="1" class="InputText"></select>
+                            </li>
+                    
+              
+                 </ul>
+            </div>                
+        </div>                    
+        <p></p>
+        <div class="buttonArea">
+              <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
+              <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
+            <a data-align="center" data-role="button" data-iconpos="right" data-icon="search" style="background-color:#0064b5; border-color:white;color: white;width:85%;" onclick="searchCargoReceipts()" >Search</a>                    
+        </div>                
+    </div>
+
+    <!--History-->
+    <div id="tabstrip-history"
+        data-role="view"
+        data-title="AWB History">                             
+          <div class="view-content">            
+        </div>       
+        
+    </div>
+    
+    <!--Settings-->
+    <div id="tabstrip-settings"
+        data-role="view">
+          <div data-role="header">
+            <div data-role="navbar">    
+                    <span data-role="view-title"> Settings </span>                
+                     <a href="#tabstrip-home" data-role="button" data-align="right">Done</a>                      
+            </div>
+        </div> 
+        <div class="view-content">
+             <ul data-role="listview" data-style="inset" >                
+                  <li> Result Display
+                      <span class="settingLabelspan" text-align="right"> </span>
+                        <!--<input id="displayCount" type="text" />-->
+                      <select id="ddDisplayCount" text-align="center" class="InputText">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                       </select>
+                  </li>                      
+                  <li> Notification 
+                                <ul data-role="buttongroup" data-index="0">
+                                    <li data-icon="toprated" style="font-size: 0.8em">Yes</li>
+                                     <li data-icon="globe" style="font-size: 0.8em">No</li>
+                                </ul>
+                  </li>
+                         
+                  <li>   Auto-OverRide      
+                                <ul data-role="buttongroup" data-index="0">
+                                    <li data-icon="toprated" style="font-size: 0.8em">Yes</li>
+                                     <li data-icon="globe" style="font-size: 0.8em">No</li>
+                                </ul>
+                  </li>
+                  
+                   <li> 
+                        <div class="buttonArea">
+                            <a data-align="center" data-role="button" data-iconpos="right" data-icon="action" style="background-color:#0064b5; border-color:white;color: white;width:85%;"  data-click="logoff" data-rel="external" data-transition="zoom" >Logout</a>                    
+                        </div>                
+                   </li>
+               
+             </ul>
+                                      
+        </div>                
+    </div>
+        
+    <!--Share-->
+    <div id="tabstrip-share"
+        data-role="view"
+        data-title="Cargo Receipt Sharing">          
+           <!--<a data-click="closeAirportList" data-role="backbutton" data-align="left">Back</a>-->
+          <h3 class="welcome">Cargo Receipts Sharing</h3>
+          <div data-role="header">
+            <div data-role="navbar">    
+                    <span data-role="view-title"> Sharing </span>                
+                     <a href="#tabstrip-home" data-role="button" data-align="right">Done</a>                      
+            </div>
+        </div> 
+                
+        <div class="view-content">               
+            <!--<p class="header-title"> Share this to : </p> 
+            <ul data-role="listview" data-style="inset">
+                <li>
+                    <span class="settingLabelspan"> Recipient:</span>
+                    <input id="RecipientTxt" type="text" />
+                </li>                                                    
+                <li>
+                     <span class="settingLabelspan"> Subject:</span>
+                     <input id="SubjectTxt" type="text" />
+                 </li>                                                                                    
+                <li>
+                <span class="settingLabelspan"> Message:</span> 
+                <textarea id = "myTextArea" rows = "5"  cols = "200" placeholder="Your text here"></textarea>
+                </li>         
+             </ul>            
+              <!--<a data-align="center" data-role="button" class="common-button" href="LookupTab.html" text-align="center">Send</a>              -->
+              <!--<p></p>
+              <button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>
+
+             <div class="buttonArea">
+                  <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
+                  <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
+                  <!--<a data-align="center" data-role="button" data-iconpos="left" data-icon="share" style="background-color:#0064b5; border-color:white;color: white;width:85%;" href="#lookup-layout"> Send</a>                    -->
+            <!--</div>               -->
+
+              
+             <ul data-role="listview" data-style="inset" >                
+                  <li data-icon="globe"> <a> Mobile Contacts </a> </li>                      
+                  <li data-icon="toprated"> <a> CP Contacts  </a> </li>
+                  <li data-icon="globe"> <a> Facebook </a> </li>                      
+                  <li data-icon="toprated"> <a> Twitter  </a> </li>                         
+                  <li data-icon="globe"> <a> Gmail    </a> </li>                                   
+                  <li data-icon="toprated"> <a> Yahoo   </a> </li>               
+             </ul>
+
+            <div class="buttonArea">
+                <a data-align="center" data-role="button" data-iconpos="right" data-icon="action" style="background-color:#0064b5; border-color:white;color: white;width:85%;"  data-click="logoff" data-rel="external" data-transition="zoom" > Share </a>                    
+            </div>                              
+          </div>
+                
+                                                                      
+    </div>               
+    
+     <div class="content">
+            <div class="result-area ch60">
+                <div id="infoField" type="text" readonly="readonly"></div>
+                <div class="separator"></div>
+            </div>         
+	</div>    
+    <!--Look-Up-->
+    
+    <div id="lookup-layout"
+        data-role="view">   
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
+                    <span data-role="view-title">Search Result</span>
+                </div>
+            </header>
+             <div class="view-content">
+                 <div class="km-listview-wrapper">
+                     <ul data-role="listview" data-style="inset" class="km-widget km-listview km-list km-listinset">             
+                    <li>
+                            <ul  id="searchResult" class="km-list"> 
+                            </ul>
+                     </li>
+                </ul>                          
+                 </div>
+             
+            </div>                                        
+              
+             <!--<ul id="searchResult"data-role="listview" data-style="inset" data-type="group">                         
+             <li>Hello<a href="#tabstrip-settings" data-role="detailbutton" data-style="detaildisclose"></a></li>
+            </ul> -->                       
+                      
+    </div>
+    
+    <!--CargoReceipt Detail-->
+     <div id="tabstrip-CargoDetail"
+        data-role="view"
+        data-title="CCN">        
+        <div class="view-content">               
+            <form name='detailForm' id='detailForm' method='POST' action='LookupTab.html'>
+                <h3 class="welcome">Details</h3>
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <span class="settingLabelspan"> AWB No</span>
+                        <input id="AWBNoTxtDetail" type="text" disabled/>
+                    </li>                                                    
+                    <li>
+                         <span class="settingLabelspan">Issuing Date</span>
+                         <input id="txtIssuingDateDetail" name="txtIssuedFromDate" type='text' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Acceptance Date</span>
+                         <input id="txtAcceptanceDateDetail" name="txtIssuedToDate" type='text' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Origin</span>
+                         <input id="txtOriginDetail" name="txtAcceptanceFromDate" type='text' disabled />
+                     </li> 
+                    <li>
+                         <span class="settingLabelspan"> Destination</span>
+                         <input id="txtDestinationDetail" name="txtAcceptanceToDate" type='text' disabled />
+                     </li> 
+                    <!--<li>
+                         <span class="settingLabelspan"> Last FWB Date/Time</span>        
+                        <input id="txtLastFWBDetail" name="txtAcceptanceToDate" type='text' disabled />
+                        
+                    </li>                  
+                    <li>
+                         <span class="settingLabelspan"> Last FSU Date/Time</span>
+                        <input id="txtLastFSUDetail" name="txtAcceptanceToDate" type='text' disabled />
+                    </li>               
+                     <li>
+                         <span class="settingLabelspan"> Last Printed Date/Time</span>
+                        <input id="txtLastPrintedDetail" name="txtAcceptanceToDate" type='text' disabled />
+                    </li>-->               
+                    <li>Notification <input data-role="switch" id="Notification-switch" ></li>
+                 </ul>     
+              </form>  
+        </div>
+        <p></p>
+        <div class="buttonArea">
+              <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
+              <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
+            <!--<a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">View Cargo Receipt</a>                    -->
+          <!--  <button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>-->
+        </div>
+        <div id="infoField" type="text" readonly="readonly"></div>
+    </div>
+
+    <!--Layout-->
+    <div data-role="layout" data-id="tabstrip-layout">
+        <!--Header-->
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+
+        <!--Footer-->
+        <div data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#tabstrip-home" data-icon="home">Home</a>
+                <a href="#tabstrip-history" data-icon="history">History</a>  
+                <a href="#tabstrip-settings" data-icon="settings">Settings</a>
+                <a href="#tabstrip-share" data-icon="share">Share</a>
+            </div>
+        </div>
+    </div>
+
+    
+ <script>
+        $(".header").click(function () {
+
+            $header = $(this);
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition                                                               
+                    return $content.is(":visible") ? " [-] Hide Options": " [+] More Options";
+                    $content.classname="spanheader";
+                });
+            });
+        });                                     
+
+     
+ 
+function toggle() {
+	var ele = document.getElementById("toggleText");
+	var text = document.getElementById("displayText");
+	if(ele.style.display == "block") {
+    		ele.style.display = "none";
+    		text.innerHTML = " [+] More Options";
+  	}
+	else {
+		ele.style.display = "block";
+		text.innerHTML = " [-] Hide Options";
+	}
+} 
+     
+  function logoff() {      
+      //var app = new kendo.mobile.Application();      
+      //app.navigate("#tabstrip-home");
+      app.navigate("loginNew.html");
+       /*     $.post("/fakeaccount/_logoff", function (response) {
+                if (response.Success) {
+                    app.navigate("login.html");
+                }
+            });
+      */
+      }     
+     
+  function verifyLogin(){      
+      app.navigate("#tabstrip-share");
+  }          
+ </script>
+    
+    
+    
+</body>
+</html>

@@ -175,3 +175,63 @@
 .km-wp .km-view .km-content .km-list > li .km-icon {
     color: rgb(255, 255, 255);
 }
+.km-lock-e:after,
+    .km-lock-e:before
+    {
+        content: "\e0ff";
+    }
+
+.km-phone-e:after,
+    .km-phone-e:before
+    {
+        content: "\e326";
+    }
+
+.km-cp-e:after,
+    .km-cp-e:before
+    {
+        content: "\e0e4";
+    }
+
+.km-twitter-e:after,
+    .km-twitter-e:before
+    {
+        content: "\e094";
+    }
+
+
+.km-gMail-e:after,
+    .km-gMail-e:before
+    {
+        content: "\e09a";
+    }
+
+.km-yahoo-e:after,
+    .km-yahoo-e:before
+    {
+        content: "\e088";
+    }
+
+.km-logout-e:after,
+    .km-logout-e:before
+    {
+        content: "\e0b3";
+    }
+
+.km-login-e:after,
+    .km-login-e:before
+    {
+        content: "\e100";
+    }
+
+.km-share-e:after,
+    .km-share-e:before
+    {
+        content: "\e30b";
+    }
+
+.km-search-e:after,
+    .km-search-e:before
+    {
+        content: "\e31e";
+    }
