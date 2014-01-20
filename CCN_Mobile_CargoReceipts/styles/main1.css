@@ -291,6 +291,19 @@ a:visited {
     background-color:AliceBlue; 
 }
 
+.km-ios7 .view-content h3 {
+    /*color: #2e5968; */
+   color:White;
+}
+
+.km-ios7 .view-content #displayText
+{
+    width:100%;
+    margin:15px;
+    color: White;
+}
+
+
 .km-tablet .km-ios .km-navbar .km-view-title {
     color: #000;
     text-shadow: 0 -1px rgba(255,255,255,0.3);
@@ -302,7 +315,15 @@ a:visited {
 
 .km-android .view-content p,
 .km-android .view-content h3 {
-    color: #2e5968;
+    /*color: #2e5968; */
+   color:White;
+}
+
+.km-android .view-content #displayText
+{
+    width:100%;
+    margin:15px;
+    color: White;
 }
 
 .km-android .weather-info.temperature.low {
