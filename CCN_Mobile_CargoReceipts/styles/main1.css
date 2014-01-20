@@ -39,12 +39,12 @@ body, html {
 }
 
 .logo {
-    background-image: url(../styles/images/logo.png);
-    background-repeat: no-repeat;
-    width: 85px;
-    height: 60px;
-    margin: 40px auto;
-}
+    background-image: url(../styles/images/CompanyLogo.png);
+    background-repeat: no-repeat;    
+    width: 140px;
+    height: 80px;
+    margin: 30px auto;
+   }
 
 /* TEXT BOXES & LABELS  */
 .settingLabelspan {

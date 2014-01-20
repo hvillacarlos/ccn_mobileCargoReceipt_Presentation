@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+
+    <script src="cordova.js"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>    
+
+    <script src="scripts/login.js"></script>
+    <script src="scripts/app.js"></script>
+
+</head>
+<body>
+    <div class="km-modalview km-view" data-role="view" id="modalview-login" style="width: 100%; height: auto;" data-style="inset">
+        <div class="km-header" data-role="header">
+            <div class="km-navbar" data-role="navbar">
+                <div class="km-view-title">
+                    <span>Login</span>
+                </div>
+            </div>
+        </div>    
+         <div class="logo"></div>
+        <div class="km-listview-wrapper">
+            <ul class="km-listview km-list km-listinset" data-role="listview" data-style="inset">
+                <li>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" />
+                </li>
+                <li>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" />
+                </li>
+            </ul>
+        </div>
+        <div id="login-message"></div>
+<!--        <a class="km-button" data-click="authenticateUser" id="modalview-login-button" data-role="button"><span class="km-text">Login</span></a><br />
+-->        
+        <div class="buttonArea">
+            <!--<a data-align="center" data-role="button" data-iconpos="right" data-icon="search" style="background-color:#0064b5; border-color:white;color: white;width:85%;" data-click="authenticateUser" >Login</a>                    -->
+            <a data-align="center" data-role="button" data-iconpos="right" data-icon="contacts" style="background-color:#0064b5; border-color:white;color: white;width:85%;" href="index.html" data-transition="zoom" >Login</a>                     
+        </div>                
+        
+        
+    </div>
+ 
+    <script>
+ 
+        function authenticateUser() {
+            var userName = $("#username").val();
+            var password = $("#password").val();
+            var $msg = $("#login-message");
+            
+            
+            //var app = new kendo.mobile.Application(document.body, { layout: "tabstrip-layout"});
+             //app.navigate("index.html");
+            //window.location("index.html");             
+/*            $.ajax({
+                url: "/fakeaccount/_login",
+                data: { UserName: userName, Password: password, RememberMe: false },
+                dataType: "json",
+                type: "POST",
+                success: function (data) {
+                    if (data.Success) {
+                        $msg.hide();
+                        app.navigate("");
+                    } else {
+                        $msg.html(data.Message).show();
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText)
+                }
+            });
+*/        }
+ 
+    </script>
+</body>
+</html>

@@ -13,7 +13,7 @@
         document.getElementById('btnOpenPDF').onclick = function() 
         {
        var app = new Application();
-           app.Run();
+           app.Run();          
          }
     }                                                    
      function Application() { }            
