@@ -21,17 +21,20 @@ var clickedAWBSuffix;
                     schema: {data: "data"}
                     }
                );
-function getCargoReceiptDetail()
-{   
-   
+function login()
+{    
 
+    
+    var RandomValue=Math.random();
     var searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?" +
+               "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
                "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
                 "&IssuingFromDate=&IssuingToDate="+
                 "&AcceptanceFromDate=&AcceptanceToDate="+
                "&Origin=&Destination="+
-                "&companyId=TRAINING";//+document.getElementById("TE").value;   
-   
+                "&companyId=TRAINING&rand="+RandomValue;//+document.getElementById("TE").value;   
+  
+
    $.ajax({
 
             type: "GET",
@@ -43,12 +46,64 @@ function getCargoReceiptDetail()
             dataType: "json",
             success: function (data) {
                 var result = data;
-                
+                document.getElementById("AWBNoTxt").value=clickedAWBPrefix+clickedAWBSuffix;
                 document.getElementById("AWBNoTxtDetail").value=result[0].AWBNumber;
                 document.getElementById("txtIssuingDateDetail").value=result[0].IssuingDate;
                 document.getElementById("txtAcceptanceDateDetail").value=result[0].AcceptanceDate;
                 document.getElementById("txtOriginDetail").value=result[0].Origin;
                 document.getElementById("txtDestinationDetail").value=result[0].Destination;
+                
+                if(result[0].CompleteDetails=="0")
+                    setNotificationSetting("false"); 
+                
+                /*document.getElementById("txtLastFWBDetail").value=result[0].LastFWBRecdDateTime;
+                document.getElementById("txtLastFSUDetail").value=result[0].LastRCSRecdDateTime;
+                document.getElementById("txtLastPrintedDetail").value=result[0].LastPrintDateTime;*/
+                    
+                }
+        });
+    window.location.href = "#tabstrip-CargoDetail"    
+}
+function getCargoReceiptDetail(passedAWBNumber,NotificationSetting)
+{   
+   
+    clickedAWBPrefix=passedAWBNumber.substring(0,3);
+    clickedAWBSuffix=passedAWBNumber.substring(4);
+    
+    var RandomValue=Math.random();
+    var searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?" +
+               "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
+               "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
+                "&IssuingFromDate=&IssuingToDate="+
+                "&AcceptanceFromDate=&AcceptanceToDate="+
+               "&Origin=&Destination="+
+                "&companyId=TRAINING&rand="+RandomValue;//+document.getElementById("TE").value;   
+   $("#Notification").show();
+   if(NotificationSetting==" ")       
+        setNotificationSetting(passedAWBNumber);       
+    else
+        setNotificationSetting(NotificationSetting);
+   $.ajax({
+
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: searchURL,
+            cache: false,
+            async: false,
+            corssDomain: true,
+            dataType: "json",
+            success: function (data) {
+                var result = data;
+                document.getElementById("AWBNoTxt").value=clickedAWBPrefix+clickedAWBSuffix;
+                document.getElementById("AWBNoTxtDetail").value=result[0].AWBNumber;
+                document.getElementById("txtIssuingDateDetail").value=result[0].IssuingDate;
+                document.getElementById("txtAcceptanceDateDetail").value=result[0].AcceptanceDate;
+                document.getElementById("txtOriginDetail").value=result[0].Origin;
+                document.getElementById("txtDestinationDetail").value=result[0].Destination;
+                
+                if(result[0].CompleteDetails=="0")
+                    setNotificationSetting("false"); 
+                
                 /*document.getElementById("txtLastFWBDetail").value=result[0].LastFWBRecdDateTime;
                 document.getElementById("txtLastFSUDetail").value=result[0].LastRCSRecdDateTime;
                 document.getElementById("txtLastPrintedDetail").value=result[0].LastPrintDateTime;*/
@@ -60,20 +115,19 @@ function getCargoReceiptDetail()
 }
 function searchCargoReceipts()
 {   
-   
+    var RandomValue=Math.random();
     var AWBPrefix=document.getElementById("AWBNoTxt").value.substring(0,3);
     var AWBSuffix=document.getElementById("AWBNoTxt").value.substring(3);
-    clickedAWBSuffix=AWBSuffix;
-    clickedAWBPrefix=AWBPrefix;
+    
     var searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?" +
                "AwbPrefix="+AWBPrefix+"&AwbSuffix="+AWBSuffix+
                 "&IssuingFromDate="+document.getElementById("txtIssuedFromDate").value+"&IssuingToDate="+document.getElementById("txtIssuedToDate").value+
                 "&AcceptanceFromDate="+document.getElementById("txtAcceptanceFromDate").value+"&AcceptanceToDate="+document.getElementById("txtAcceptanceToDate").value+
                "&Origin="+document.getElementById("drpOrigin").value+"&Destination="+document.getElementById("drpDestination").value+""+
-                "&companyId=TRAINING";//+document.getElementById("TE").value;
-    /*searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?AwbPrefix=&AwbSuffix=&IssuingFromDate="+
-    "&IssuingToDate=&AcceptanceFromDate=&AcceptanceToDate=&Origin=SIN&Destination=LAX&companyId=TRAINING"*/
-   
+                "&companyId=TRAINING&rand="+RandomValue;//+document.getElementById("TE").value;
+    //earchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?AwbPrefix=&AwbSuffix=&IssuingFromDate="+
+    //&IssuingToDate=&AcceptanceFromDate=&AcceptanceToDate=&Origin=SIN&Destination=LAX&companyId=TRAINING&rand="+RandomValue;
+
    $.ajax({
 
             type: "GET",
@@ -87,10 +141,10 @@ function searchCargoReceipts()
                 
                 var result = data;
                 var items=[];
-                
+                                                         
                 $.each(result, function (key, value) 
                     {     
-                        items.push('<li class><a class="km-listview-link" data-role="listview-link" onclick="getCargoReceiptDetail()">' + value.AWBNumber + '</a></li>');                                            
+                        items.push('<li class><a class="km-listview-link" data-role="listview-link" onclick="getCargoReceiptDetail(\'' + value.AWBNumber + '\',\' \');">' + value.AWBNumber + '</a></li>');                                            
                      });
                 
                     $('#searchResult').html(items.join(''));
@@ -106,6 +160,7 @@ function PageLoad()
     var CurrentDate=new Date();
     var CurrentMonth;*/
     document.getElementById("AWBNoTxt").value="61837349454";
+    checkSession();
     LoadCity();
 /*    CurrentMonth=(CurrentDate.getMonth()+1).toString();
     if(CurrentMonth.length==1) 
@@ -129,6 +184,8 @@ function LoadCity(Object)
                 
                     var result = data;
                       
+                    $('#drpOrigin').html($('#drpOrigin').html() + "<option > </option>");
+                    $('#drpDestination').html($('#drpDestination').html() + "<option> </option>");
                     $.each(result, function (key, value) 
                     {
                         var appenddata = "<option value = '" + value.CityCode + " '>" + value.CityName + " </option>";

@@ -12,7 +12,10 @@
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/CargoReceipt.js"></script>
-
+    <script src="jaydata/jaydata.js"></script>    
+    <script src="scripts/WebSQLCodes.js"></script>        
+    <script  type="text/javascript" src="http://include.jaydata.org/jaydata.min.js"></script>
+    
 </head>
 <body onload="PageLoad()">
     <!--Home-->    
@@ -74,13 +77,27 @@
         </div>                
     </div>
 
-    <!--History-->
+    <!--Look-Up History-->
     <div id="tabstrip-history"
-        data-role="view"
-        data-title="AWB History">                             
-          <div class="view-content">            
-        </div>       
-        
+        data-role="view">   
+            <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
+                    <span data-role="view-title">History</span>
+                    <a  data-align="right" data-role="button" onClick="clearHistory()">Clear</a>
+                </div>
+            </header>
+             <div class="view-content">
+                 <div class="km-listview-wrapper">
+                     <ul data-role="listview" data-style="inset" class="km-widget km-listview km-list km-listinset">             
+                        <li>
+                                <ul  id="searchHistory" class="km-list"> 
+                                </ul>
+                         </li>
+                     </ul>                          
+                 </div>
+             
+            </div>                                                                                                    
     </div>
     
     <!--Settings-->
@@ -209,10 +226,15 @@
     <!--CargoReceipt Detail-->
      <div id="tabstrip-CargoDetail"
         data-role="view"
-        data-title="CCN">        
+        data-title="Details">        
+         <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
+                    <span data-role="view-title">Details</span>
+                </div>
+            </header>
         <div class="view-content">               
-            <form name='detailForm' id='detailForm' method='POST' action='LookupTab.html'>
-                <h3 class="welcome">Details</h3>
+            <form name='detailForm' id='detailForm' method='POST' action='LookupTab.html'>                
                 <ul data-role="listview" data-style="inset">
                     <li>
                         <span class="settingLabelspan"> AWB No</span>
@@ -247,16 +269,17 @@
                          <span class="settingLabelspan"> Last Printed Date/Time</span>
                         <input id="txtLastPrintedDetail" name="txtAcceptanceToDate" type='text' disabled />
                     </li>-->               
-                    <li>Notification <input data-role="switch" id="Notification-switch" ></li>
+                    <li id="Notification"><span class="settingLabelspan"> Notification</span> <input data-role="switch" id="Notification-switch" ></li>
                  </ul>     
               </form>  
         </div>
         <p></p>
         <div class="buttonArea">
-              <!--<input type="button" id="SearchBtn" data-role="button" value="Search" class="common-button" data-event="#lookup-layout" />  
-              <a data-align="center" data-role="button" class="common-button" href="#lookup-layout">Search</a>-->  
             <!--<a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">View Cargo Receipt</a>                    -->
-          <!--  <button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>-->
+            <a id="btnOpenPDF" data-align="center" data-role="button" class="common-button" >View Cargo Receipt</a>       
+            <a id="btnHistory" data-align="center" data-role="button" class="common-button" onclick="addToHistory()">Save to History</a>  
+            <a id="btnShare" data-align="center" data-role="button" class="common-button" href="#tabstrip-share" >Share</a>    
+            <!--<button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>-->
         </div>
         <div id="infoField" type="text" readonly="readonly"></div>
     </div>
@@ -274,7 +297,7 @@
         <div data-role="footer">
             <div data-role="tabstrip">
                 <a href="#tabstrip-home" data-icon="home">Home</a>
-                <a href="#tabstrip-history" data-icon="history">History</a>                  
+                <a data-icon="history" onclick="refreshHistory()">History</a>                  
                 <a href="#tabstrip-share" data-icon="share">Share</a>
                 <a href="#tabstrip-settings" data-icon="settings">Settings</a>
             </div>
