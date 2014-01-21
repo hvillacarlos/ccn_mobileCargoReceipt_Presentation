@@ -156,6 +156,7 @@ function searchCargoReceipts()
 }
 function PageLoad()
 {         
+    alert("PageLoad Here");
 /*    var x=document.getElementById("txtIssuedFromDate");
     var CurrentDate=new Date();
     var CurrentMonth;*/
