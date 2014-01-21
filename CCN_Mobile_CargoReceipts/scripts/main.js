@@ -36,8 +36,8 @@
         }
 
             Application.prototype.getWorkingFolder = function() {
-            	var path = window.location.href.replace('index.html', '');
-                path = path.replace('#tabstrip-share','');            	
+            	var path = window.location.href.replace('mainpage.html', '');
+                path = path.replace('#tabstrip-CargoDetail','');            	
                 return path;
             }
         

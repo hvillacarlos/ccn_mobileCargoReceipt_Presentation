@@ -155,12 +155,13 @@ function searchCargoReceipts()
 
 }
 function PageLoad()
-{
+{         
 /*    var x=document.getElementById("txtIssuedFromDate");
     var CurrentDate=new Date();
     var CurrentMonth;*/
     document.getElementById("AWBNoTxt").value="61837349454";
     checkSession();
+    
     LoadCity();
 /*    CurrentMonth=(CurrentDate.getMonth()+1).toString();
     if(CurrentMonth.length==1) 
@@ -170,7 +171,7 @@ function PageLoad()
     
 }
 function LoadCity(Object)
-{
+{    
    var cityURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCities";
     $.ajax({
 
