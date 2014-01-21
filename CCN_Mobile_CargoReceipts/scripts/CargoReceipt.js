@@ -198,15 +198,7 @@ function LoadCity(Object)
     
  
 }
-        
-
-
-
-
-
-
-
- 
+         
 
     function showBloggers(e) {
 
