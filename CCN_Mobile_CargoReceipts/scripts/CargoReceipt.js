@@ -73,11 +73,11 @@ function getCargoReceiptDetail(passedAWBNumber,NotificationSetting)
     var RandomValue=Math.random();
     var searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?" +
                "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
-               "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
                 "&IssuingFromDate=&IssuingToDate="+
                 "&AcceptanceFromDate=&AcceptanceToDate="+
                "&Origin=&Destination="+
                 "&companyId=TRAINING&rand="+RandomValue;//+document.getElementById("TE").value;   
+
    $("#Notification").show();
    if(NotificationSetting==" ")       
         setNotificationSetting(passedAWBNumber);       
@@ -94,6 +94,7 @@ function getCargoReceiptDetail(passedAWBNumber,NotificationSetting)
             dataType: "json",
             success: function (data) {
                 var result = data;
+                
                 document.getElementById("AWBNoTxt").value=clickedAWBPrefix+clickedAWBSuffix;
                 document.getElementById("AWBNoTxtDetail").value=result[0].AWBNumber;
                 document.getElementById("txtIssuingDateDetail").value=result[0].IssuingDate;
@@ -144,7 +145,7 @@ function searchCargoReceipts()
                                                          
                 $.each(result, function (key, value) 
                     {     
-                        items.push('<li class><a class="km-listview-link" data-role="listview-link" onclick="getCargoReceiptDetail(\'' + value.AWBNumber + '\',\' \');">' + value.AWBNumber + '</a></li>');                                            
+                        items.push('<li class><a class="km-listview-link" data-role="listview-link" onClick="getCargoReceiptDetail(\'' + value.AWBNumber + '\',\' \');">' + value.AWBNumber + '</a></li>');                                            
                      });
                 
                     $('#searchResult').html(items.join(''));
@@ -160,9 +161,9 @@ function PageLoad()
     var CurrentDate=new Date();
     var CurrentMonth;*/
     document.getElementById("AWBNoTxt").value="61837349454";
-    checkSession();
-    
+    checkSession();    
     LoadCity();
+   
 /*    CurrentMonth=(CurrentDate.getMonth()+1).toString();
     if(CurrentMonth.length==1) 
         CurrentMonth="0"+CurrentMonth;  
@@ -208,8 +209,10 @@ function LoadCity(Object)
     }
 
 
-     function authenticateUser() 
+ function authenticateUser() 
  {
-      app.application.navigate("mainpage.html");
+     //PageLoad();
+     window.location.href = "mainpage.html"
+      //app.application.navigate("mainpage.html");
  }
 

@@ -47,13 +47,14 @@ function checkSession()
                                         if(results.rows.length>0)                                        
                                       window.location.href = "#tabstrip-home"    
                                         else
-                                            window.location.href = "#tabstrip-login"
+                                            window.location.href = "#tabstrip-home"     
+                                        //window.location.href = "index.html"
                                         
                                     });
 		                    }
 	                    )
 
-    window.location.href = "#tabstrip-history"    
+    window.location.href = "#tabstrip-home"    
 }
 function refreshHistory()
 {
