@@ -155,8 +155,7 @@ function searchCargoReceipts()
 
 }
 function PageLoad()
-{         
-    alert("PageLoad Here");
+{          
 /*    var x=document.getElementById("txtIssuedFromDate");
     var CurrentDate=new Date();
     var CurrentMonth;*/
@@ -207,4 +206,10 @@ function LoadCity(Object)
         bloggersData.fetch();
 
     }
+
+
+     function authenticateUser() 
+ {
+      app.application.navigate("mainpage.html");
+ }
 

@@ -11,11 +11,12 @@
     
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
-    <script src="scripts/main.js"></script>    
+    <script src="scripts/main.js"></script> 
+    <script src="scripts/CargoReceipt.js"></script> 
     <script src="scripts/login.js"></script>    
 
 </head>
-<body onload="PageLoad()">    
+<body>    
     <div id="tabstrip-login"
         data-role="view"
         data-title="CCN">        
@@ -40,7 +41,7 @@
             <p></p>
             <p></p>
             <div class="buttonArea">        
-                <a data-align="center" data-role="button" data-iconpos="right" data-icon="login-e" style="background-color:#0064b5; border-color:white;color: white;width:85%;" data-click="authenticateUser" data-transition="zoom" >Login</a>                     
+                <a data-align="center" data-role="button" data-iconpos="right" data-icon="login-e" style="background-color:#0064b5; border-color:white;color: white;width:85%;" onClick="authenticateUser()" data-transition="zoom" >Login</a>                     
             </div>                           
             
     </div>    
@@ -62,7 +63,7 @@
         </div>
     </div>
          
-    <script>
+   <!-- <script>
  
         function authenticateUser() {
             var userName = $("#username").val();
@@ -93,6 +94,6 @@
             });
 */        }
  
-    </script>
+    </script>-->
 </body>
 </html>
