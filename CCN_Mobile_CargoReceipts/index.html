@@ -12,8 +12,10 @@
     <script src="kendo/js/jquery.min.js"></script>
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="scripts/main.js"></script> 
-    <script src="scripts/CargoReceipt.js"></script> 
+    <script src="jaydata/jaydata.js"></script>    
+    <script src="scripts/CargoReceipt.js"></script>     
     <script src="scripts/login.js"></script>    
+    <script src="scripts/WebSQLCodes.js"></script>  
 
 </head>
 <body>    
@@ -21,28 +23,33 @@
         data-role="view"
         data-title="CCN">        
         <div class="view-content">               
-            <form name='searchForm' id='searchForm' method='POST' action='mainpage.html'>
+            <form name='searchForm' id='searchForm' method='POST' >
                 <div class="logo"></div>
                 <h3 class="welcome">Enter your Credentials</h3>
                     <div class="km-listview-wrapper">
                         <ul class="km-listview km-list km-listinset" data-role="listview" data-style="inset">
                             <li>
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" class="InputText" />
+                                <label for="company">CompanyID</label>
+                                <input type="text" id="CompanyID" class="InputText" value="TRAINING"/>
                             </li>
                             <li>
-                                <label for="password">Password:</label>
-                                <input type="password" id="password" class="InputText"/>
+                                <label for="username">Username</label>
+                                <input type="text" id="Username" class="InputText" value="BOMCADMIN"/>
+                            </li>
+                            <li>
+                                <label for="password">Password</label>
+                                <input type="password" id="password" class="InputText" value="password"/>
                             </li>
                         </ul>
                     </div>
                 </form>
-            <div id="login-message"></div>
+            <div><label id="login-message" style="color:red;" ></label></div>
             <p></p>
             <p></p>
             <div class="buttonArea">        
-                <a data-align="center" data-role="button" data-iconpos="right" data-icon="login-e" style="background-color:#0064b5; border-color:white;color: white;width:85%;" onClick="authenticateUser()" data-transition="zoom" >Login</a>                     
-            </div>                           
+                <a data-align="center" data-role="button" data-iconpos="right" data-icon="login-e" style="background-color:#0064b5; border-color:white;color: white;width:85%;" onClick="loginAuthentication()" data-transition="zoom" >Login</a>                     
+            </div>          
+            
             
     </div>    
    </div>    

@@ -31,6 +31,35 @@ SettingsDB.onReady(function()
 {
     
 });
+
+
+
+function saveSetting(CompanyID,Username,Password)
+{
+      
+         var db = window.openDatabase("MySettingsDB", "", "My WebSQL test database", 5*1024*1024);
+  
+                    var sqlstr="SELECT * FROM Settings";                     
+	                    db.transaction(
+		                    function(tx)
+                            {       tx.executeSql('DELETE FROM Settings');                 
+                                    tx.executeSql(sqlstr, [], function (tx, results) 
+                                    {                
+                                        var SettingInfo = new SettingDetails();                     
+                                                    SettingInfo.UserName=Username;
+                                                    SettingInfo.Status="0";
+                                                    SettingInfo.CompanyID=CompanyID;
+                                                    SettingInfo.DisplayCount="100";
+                                                    SettingInfo.Notification="true";
+                                                    SettingInfo.AutoOverride="true";
+                
+                                                    SettingsDB.add(SettingInfo);
+                                                    SettingsDB.saveChanges();                                           
+                                         window.location.href = "mainpage.html";                                                         
+                                    });
+		                    }
+	                    )
+}
 function checkSession()
 {
     
@@ -38,23 +67,26 @@ function checkSession()
      
      var db = window.openDatabase("MySettingsDB", "", "My WebSQL test database", 5*1024*1024);
     
-                    var sqlstr="SELECT * FROM Settings where Status=1";                     
+                    var sqlstr="SELECT * FROM Settings where Status=0";                     
 	                    db.transaction(
 		                    function(tx)
-                            {                                  
+                            {                             
                                     tx.executeSql(sqlstr, [], function (tx, results) 
-                                    {               
-                                        if(results.rows.length>0)                                        
-                                      window.location.href = "#tabstrip-home"    
-                                        else
-                                            window.location.href = "#tabstrip-home"     
-                                        //window.location.href = "index.html"
+                                    {                
+                                        if(results.rows.length>0)           
+                                        {
+                                            
+                                              window.location.href = "#tabstrip-home"       
+                                        }                                         
+                                        
+                                         
+                                        
                                         
                                     });
 		                    }
 	                    )
 
-    window.location.href = "#tabstrip-home"    
+    //window.location.href = "#tabstrip-home"    
 }
 function refreshHistory()
 {

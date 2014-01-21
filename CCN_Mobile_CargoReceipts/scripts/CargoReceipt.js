@@ -1,6 +1,7 @@
 var lstCity;
 var clickedAWBPrefix;
 var clickedAWBSuffix;
+var loggedCompanyID=1111;
     lstCity = new kendo.data.DataSource
                (
                     {
@@ -21,19 +22,14 @@ var clickedAWBSuffix;
                     schema: {data: "data"}
                     }
                );
-function login()
+function loginAuthentication()
 {    
 
     
+    
     var RandomValue=Math.random();
-    var searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/GetCargoReceiptRecords?" +
-               "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
-               "AwbPrefix="+clickedAWBPrefix+"&AwbSuffix="+clickedAWBSuffix+
-                "&IssuingFromDate=&IssuingToDate="+
-                "&AcceptanceFromDate=&AcceptanceToDate="+
-               "&Origin=&Destination="+
-                "&companyId=TRAINING&rand="+RandomValue;//+document.getElementById("TE").value;   
-  
+    var searchURL="http://172.16.202.166/CargoReceipt/Service1.svc/Login?CompanyID="+document.getElementById("CompanyID").value+"&Username="+document.getElementById("Username").value+"&Password="+document.getElementById("password").value+"&rand="+RandomValue;
+
 
    $.ajax({
 
@@ -45,24 +41,33 @@ function login()
             corssDomain: true,
             dataType: "json",
             success: function (data) {
-                var result = data;
-                document.getElementById("AWBNoTxt").value=clickedAWBPrefix+clickedAWBSuffix;
-                document.getElementById("AWBNoTxtDetail").value=result[0].AWBNumber;
-                document.getElementById("txtIssuingDateDetail").value=result[0].IssuingDate;
-                document.getElementById("txtAcceptanceDateDetail").value=result[0].AcceptanceDate;
-                document.getElementById("txtOriginDetail").value=result[0].Origin;
-                document.getElementById("txtDestinationDetail").value=result[0].Destination;
+                if(data.Status==null)
+                {
+                        $('#login-message').text("Login failed.");
+                }   
+                else
+                {
+                    
+                    saveSetting(document.getElementById("CompanyID").value,document.getElementById("Username").value,document.getElementById("password").value);    
+                }
                 
-                if(result[0].CompleteDetails=="0")
-                    setNotificationSetting("false"); 
                 
-                /*document.getElementById("txtLastFWBDetail").value=result[0].LastFWBRecdDateTime;
-                document.getElementById("txtLastFSUDetail").value=result[0].LastRCSRecdDateTime;
-                document.getElementById("txtLastPrintedDetail").value=result[0].LastPrintDateTime;*/
                     
                 }
         });
-    window.location.href = "#tabstrip-CargoDetail"    
+    
+    //window.location.href = "Login.html"    
+
+}
+function shareCargoReceipt()
+{
+    document.getElementById("AWBNoTxtShare").value=document.getElementById("AWBNoTxtDetail").value;
+    window.location.href = "#tabstrip-share";    
+}
+function sharePrompt()
+{
+    alert("Successfully Shared");
+    
 }
 function getCargoReceiptDetail(passedAWBNumber,NotificationSetting)
 {   

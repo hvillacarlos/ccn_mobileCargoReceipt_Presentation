@@ -145,15 +145,15 @@
     <div id="tabstrip-share"
         data-role="view"
         data-title="CCN Sharing"
-         data-transition="zoom">          
-           <!--<a data-click="closeAirportList" data-role="backbutton" data-align="left">Back</a>-->
-          <h3 class="welcome">Cargo Receipts Sharing</h3>
-          <div data-role="header">
-            <div data-role="navbar">    
-                    <span data-role="view-title"> Sharing </span>                
-                     <a href="#tabstrip-home" data-role="button" data-align="right">Done</a>                      
-            </div>
-        </div> 
+         data-transition="zoom">    
+             <header data-role="header">
+                <div data-role="navbar">
+                    <a class="nav-button" data-align="left" data-role="backbutton">Back</a>
+                    <span data-role="view-title">Cargo Receipts Sharing</span>
+                    <a href="#tabstrip-home" data-role="button" data-align="right" onclick="sharePrompt()">Share</a>   
+                </div>
+            </header>
+
 
         
         <div class="view-content"> 
@@ -175,9 +175,9 @@
                   <li data-icon="yahoo-e"> <a> Yahoo   </a> </li>               
              </ul>
             <p></p>
-            <div class="buttonArea">
-                <a data-align="center" data-role="button" data-iconpos="right" data-icon="share-e" style="background-color:#0064b5; border-color:white;color: white;width:85%;"  href="index.html" data-transition="zoom" > Share </a>                    
-            </div>                              
+<!--            <div class="buttonArea">
+                <a data-align="center" data-role="button" data-iconpos="right" data-icon="share-e" style="background-color:#0064b5; border-color:white;color: white;width:85%;"  onclick="sharePrompt()" data-transition="zoom" > Share </a>                    
+            </div> -->                             
           </div>
                 
                                                                       
@@ -269,11 +269,10 @@
         </div>
         <p></p>
         <div class="buttonArea">
-            <!--<a data-align="center" data-role="button" class="common-button" href="#lookup-layout" onclick="searchCargoReceipts()">View Cargo Receipt</a>                    -->
             <a id="btnOpenPDF" data-align="center" data-role="button" class="common-button" >View Cargo Receipt</a>       
             <a id="btnHistory" data-align="center" data-role="button" class="common-button" onclick="addToHistory()">Save to History</a>  
-            <a id="btnShare" data-align="center" data-role="button" class="common-button" href="#tabstrip-share" >Share</a>    
-            <!--<button class="common-button" id="btnOpenPDF">View Cargo Receipt</button>-->
+            <a id="btnShare" data-align="center" data-role="button" class="common-button" onclick="shareCargoReceipt()" >Share Cargo Receipt</a>    
+            
         </div>
         <div id="infoField" type="text" readonly="readonly"></div>
     </div>
