@@ -165,7 +165,7 @@ function PageLoad()
 /*    var x=document.getElementById("txtIssuedFromDate");
     var CurrentDate=new Date();
     var CurrentMonth;*/
-    document.getElementById("AWBNoTxt").value="61837349454";
+    //document.getElementById("AWBNoTxt").value="61837349454";
     checkSession();    
     LoadCity();
    
